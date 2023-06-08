@@ -1,5 +1,5 @@
 function getGoods() {
-  const KEY_LOCAL_STORAGE = 'goods';
+  const KEY_GOODS_LOCAL_STORAGE = 'goods';
 
   const navLinks = document.querySelectorAll('.navigation-link');
   const navLinkShowMore = document.querySelector('.more');
@@ -58,7 +58,7 @@ function getGoods() {
       .then((res) => res.json())
       .then((data) => {
         const filterArray = category ? data.filter((item) => item[category] === value) : data; // ? если категории нет - не фильтруем
-        localStorage.setItem(KEY_LOCAL_STORAGE, JSON.stringify(filterArray)); // * сохраняем в локальное хранилище отфильтрованные данные
+        localStorage.setItem(KEY_GOODS_LOCAL_STORAGE, JSON.stringify(filterArray)); // * сохраняем в локальное хранилище отфильтрованные данные
 
         // ? если мы не находимся на данной странице - переходим на неё
         if (window.location.pathname !== '/goods.html') {
@@ -70,8 +70,8 @@ function getGoods() {
   }
 
   // * условие для рендера данных
-  if (localStorage.getItem(KEY_LOCAL_STORAGE) && window.location.pathname === '/goods.html') {
-    renderGoods(JSON.parse(localStorage.getItem(KEY_LOCAL_STORAGE)));
+  if (localStorage.getItem(KEY_GOODS_LOCAL_STORAGE) && window.location.pathname === '/goods.html') {
+    renderGoods(JSON.parse(localStorage.getItem(KEY_GOODS_LOCAL_STORAGE)));
   }
 }
 

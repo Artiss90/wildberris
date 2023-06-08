@@ -1,5 +1,5 @@
 const search = function () {
-  const KEY_LOCAL_STORAGE = 'goods';
+  const KEY_GOODS_LOCAL_STORAGE = 'goods';
   const input = document.querySelector('.search-block > input');
   const searchButton = document.querySelector('.search-block > button');
 
@@ -39,7 +39,7 @@ const search = function () {
       .then((res) => res.json())
       .then((data) => {
         const filterArray = data.filter((item) => item.name.toLowerCase().includes(value.toLowerCase())); // ? фильтруем по поисковом значении
-        localStorage.setItem(KEY_LOCAL_STORAGE, JSON.stringify(filterArray)); // * сохраняем в локальное хранилище отфильтрованные данные
+        localStorage.setItem(KEY_GOODS_LOCAL_STORAGE, JSON.stringify(filterArray)); // * сохраняем в локальное хранилище отфильтрованные данные
 
         // ? если мы не находимся на данной странице - переходим на неё
         if (window.location.pathname !== '/goods.html') {
